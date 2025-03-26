@@ -19,17 +19,6 @@ This dataset is derived from Wikipedia through structured data extraction techni
 - **Name**: Full name of the individual.
 - **Text**: Extracted content from their Wikipedia biography, which provides contextual information about their profession, achievements, and background.
 
-### 2. 20 Newsgroups Dataset
-
-**Description**:  
-This dataset contains approximately 20,000 newsgroup documents, partitioned across 20 different newsgroups. The content covers a wide range of topics, from politics and religion to sports and technology.
-
-**Source**:  
-The dataset is widely used for experiments in text applications of machine learning techniques, such as text classification and clustering.
-
-**Features**:
-- **Content**: The main body of the newsgroup post.
-- **Headers**: Metadata such as subject line, author, and date.
 
 ## Methodology
 
