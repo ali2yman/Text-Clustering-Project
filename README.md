@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project aims to apply unsupervised learning techniques to cluster documents from two datasets: the **People Wikipedia Dataset**. The goal is to uncover inherent structures within these datasets, providing insights into natural groupings of the documents.
+This project aims to apply unsupervised learning techniques to cluster documents from two datasets: the **People Wikipedia Dataset** and the **20 Newsgroups Dataset**. The goal is to uncover inherent structures within these datasets, providing insights into natural groupings of the documents.
 
 ## Datasets
 
@@ -19,6 +19,17 @@ This dataset is derived from Wikipedia through structured data extraction techni
 - **Name**: Full name of the individual.
 - **Text**: Extracted content from their Wikipedia biography, which provides contextual information about their profession, achievements, and background.
 
+### 2. 20 Newsgroups Dataset
+
+**Description**:  
+This dataset contains approximately 20,000 newsgroup documents, partitioned across 20 different newsgroups. The content covers a wide range of topics, from politics and religion to sports and technology.
+
+**Source**:  
+The dataset is widely used for experiments in text applications of machine learning techniques, such as text classification and clustering.
+
+**Features**:
+- **Content**: The main body of the newsgroup post.
+- **Headers**: Metadata such as subject line, author, and date.
 
 ## Methodology
 
@@ -89,3 +100,4 @@ Students are expected to submit the following:
 ## References
 
 - **People Wikipedia**: A project extracting structured content from Wikipedia. [Link](https://www.kaggle.com/datasets/sameersmahajan/people-wikipedia-data)
+- **20 Newsgroups Dataset**: A collection of approximately 20,000 newsgroup documents, partitioned across 20 different newsgroups. [Link](https://archive.ics.uci.edu/ml/datasets/Twenty+Newsgroups)
