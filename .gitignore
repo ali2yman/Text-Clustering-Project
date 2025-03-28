@@ -1,3 +1,5 @@
+word2vec-google-news-300.model
+word2vec-google-news-300.model.vectors.npy
 data/*
 env/
 __pycache__/
