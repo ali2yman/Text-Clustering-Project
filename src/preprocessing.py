@@ -19,7 +19,7 @@ def drop_columns(df,columns):
     return df
 
 # 2 - make a function to clean the text
-def clean_text(df, text_column):
+def clean_text(df, text_column='text'):
     """
     Cleans the text in a specified column of a DataFrame.
     Args:
@@ -36,7 +36,7 @@ def clean_text(df, text_column):
 
 
 # 3 - make a function to tokenize, remove stopwords, and apply lemmatization
-def tokenize_clean_lemmatize(df, text_column):
+def tokenize_clean_lemmatize(df, text_column='text'):
     """
     Tokenizes text, removes stopwords, and applies lemmatization.
     
