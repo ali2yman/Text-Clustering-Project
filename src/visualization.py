@@ -67,43 +67,39 @@ def plot_silhouette_scores(features, max_k=10):
 
 
 
-def apply_pca_and_visualize(features, labels=None, n_components=2):
-    """
-    Applies PCA to reduce dimensionality and visualize the dataset.
-
-    Parameters:
-    - features (np.ndarray): The high-dimensional feature matrix (TF-IDF, Word2Vec, etc.).
-    - labels (Optional[np.ndarray]): Cluster labels for coloring (default: None).
-    - n_components (int): Number of PCA components (default: 2 for 2D visualization).
-
-    Returns:
-    - pca_result (np.ndarray): Transformed 2D or 3D representation of the features.
-    """
-    # Apply PCA
-    pca = PCA(n_components=n_components)
-    pca_result = pca.fit_transform(features)
-
-    # Create a DataFrame for visualization
-    df_pca = pd.DataFrame(pca_result, columns=[f"PC{i+1}" for i in range(n_components)])
+def visualize_pca(pca_result, labels=None, n_components=2):
+    """Visualizes PCA results in 2D or 3D with hue (color coding)."""
+    
+    df_pca = pd.DataFrame(pca_result[:, :n_components], columns=[f"PC{i+1}" for i in range(n_components)])
+    
     if labels is not None:
         df_pca["Cluster"] = labels
-
-    # Plotting
+    
     plt.figure(figsize=(10, 6))
+
     if n_components == 2:
-        sns.scatterplot(x=df_pca["PC1"], y=df_pca["PC2"], hue=df_pca["Cluster"] if labels is not None else None, palette="tab10", alpha=0.7)
-        plt.xlabel("Principal Component 1")
-        plt.ylabel("Principal Component 2")
+        sns.scatterplot(x="PC1", y="PC2", hue="Cluster" if labels is not None else None, 
+                        data=df_pca, palette="tab10", alpha=0.7)
+        plt.xlabel("PC1")
+        plt.ylabel("PC2")
+
     elif n_components == 3:
         from mpl_toolkits.mplot3d import Axes3D
         fig = plt.figure(figsize=(10, 7))
         ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(df_pca["PC1"], df_pca["PC2"], df_pca["PC3"], c=labels, cmap="tab10", alpha=0.7)
-        ax.set_xlabel("Principal Component 1")
-        ax.set_ylabel("Principal Component 2")
-        ax.set_zlabel("Principal Component 3")
-    
-    plt.title("PCA Visualization of Clusters")
+        scatter = ax.scatter(df_pca["PC1"], df_pca["PC2"], df_pca["PC3"], 
+                             c=labels if labels is not None else "blue", cmap="tab10", alpha=0.7)
+        ax.set_xlabel("PC1")
+        ax.set_ylabel("PC2")
+        ax.set_zlabel("PC3")
+
+        # Add a legend
+        if labels is not None:
+            legend1 = ax.legend(*scatter.legend_elements(), title="Clusters")
+            ax.add_artist(legend1)
+
+    plt.title(f"PCA Visualization ({n_components}D)")
     plt.show()
 
-    return pca_result
+
+
