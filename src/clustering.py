@@ -23,7 +23,6 @@ def apply_pca(features, n_components):
 
 
 
-
 def apply_kmeans(features, n_clusters: int = 3, random_state: int = 42):
     """
     Applies K-Means clustering to the given feature matrix.
