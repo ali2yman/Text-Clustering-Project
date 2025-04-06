@@ -44,6 +44,7 @@ def doc2vec_vectorization(df: pd.DataFrame, text_column: str, model_path="models
     Applies Doc2Vec vectorization to text data.
 
     Parameters:
+    
     - df (pd.DataFrame): Input DataFrame.
     - text_column (str): Column name containing text data.
     - model_path (str): Path to save/load the trained model.
