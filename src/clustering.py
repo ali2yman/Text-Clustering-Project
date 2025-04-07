@@ -2,6 +2,7 @@ from sklearn.decomposition import PCA,LatentDirichletAllocation
 from sklearn.cluster import KMeans,AgglomerativeClustering
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
+import joblib
 import pandas as pd
 
 
@@ -29,8 +30,9 @@ def apply_kmeans(features, n_clusters: int = 3, random_state: int = 42):
 
     Parameters:
     - features (np.ndarray): Feature matrix (e.g., TF-IDF, Word2Vec).
-    - n_clusters (int): Number of clusters to form (default: 5).
+    - n_clusters (int): Number of clusters to form (default: 3).
     - random_state (int): Random seed for reproducibility (default: 42).
+    - save_path (str, optional): Path to save the trained KMeans model.
 
     Returns:
     - labels (np.ndarray): Cluster labels for each data point.
@@ -38,7 +40,12 @@ def apply_kmeans(features, n_clusters: int = 3, random_state: int = 42):
     """
     kmeans = KMeans(n_clusters=n_clusters, random_state=random_state, n_init=10)
     labels = kmeans.fit_predict(features)
+
+
     return labels, kmeans
+
+
+
 
 
 
