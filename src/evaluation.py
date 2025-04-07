@@ -1,4 +1,6 @@
 from sklearn.metrics import silhouette_score
+from sklearn.metrics.cluster import contingency_matrix
+import numpy as np
 
 def get_silhouette_score(features, labels):
     """
@@ -14,3 +16,15 @@ def get_silhouette_score(features, labels):
     return silhouette_score(features, labels)
 
 
+
+# get the purity of each cluster
+def purity_score(labels_true, labels_pred):
+    """
+    Calculates the purity score for evaluating clustering performance.
+    
+    """
+    # Compute contingency matrix (confusion matrix)
+    matrix = contingency_matrix(labels_true, labels_pred)
+    # Calculate the purity score
+    purity = np.sum(np.amax(matrix, axis=0)) / np.sum(matrix)
+    return purity
